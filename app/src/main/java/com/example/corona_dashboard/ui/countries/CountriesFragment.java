@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -33,7 +34,10 @@ public class CountriesFragment extends Fragment {
         recyclerView.setAdapter(countriesViewModel.getAdapter());
         countriesViewModel.update();
 
-        getActivity().findViewById(R.id.btn_refresh).setOnClickListener(view -> countriesViewModel.update());
+        getActivity().findViewById(R.id.btn_refresh).setOnClickListener(view -> {
+            countriesViewModel.update();
+            Toast.makeText(root.getContext(),"Updated!",Toast.LENGTH_SHORT).show();
+        });
 
         return root;
     }

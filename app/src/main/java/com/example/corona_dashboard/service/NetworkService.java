@@ -2,6 +2,7 @@ package com.example.corona_dashboard.service;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,9 +21,11 @@ public class NetworkService {
     private static final String TAG = NetworkService.class.getSimpleName();
     private static NetworkService mInstance;
     private static RequestQueue requestQueue;
+    private Context context;
 
     private NetworkService(Context context){
         requestQueue = Volley.newRequestQueue(context.getApplicationContext());
+        this.context = context;
     }
 
     public static synchronized NetworkService getInstance(){
@@ -49,7 +52,10 @@ public class NetworkService {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }, error -> Log.e(TAG,"Error by fetching data. Check NetworkService.getTotalStatistic()"));
+                }, error -> {
+                    Log.e(TAG,"Error by fetching data. Check NetworkService.getTotalStatistic()");
+                    Toast.makeText(context,"Update failed! Try again later.",Toast.LENGTH_LONG).show();
+                });
         requestQueue.add(jsonObjectRequest);
     }
 
@@ -63,7 +69,10 @@ public class NetworkService {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, CountryApi.country(countryName), null, response -> {
                     listener.callback(Country.parseJSONToCountry(response));
-                }, error -> Log.e(TAG,"Error by fetching data. Check NetworkService.getOneCountry()"));
+                }, error -> {
+                    Log.e(TAG,"Error by fetching data. Check NetworkService.getOneCountry()");
+                    Toast.makeText(context,"Update failed! Try again later.",Toast.LENGTH_LONG).show();
+                });
         requestQueue.add(jsonObjectRequest);
     }
 
@@ -77,7 +86,10 @@ public class NetworkService {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, CoronaApi.country(countryName), null, response -> {
                     listener.callback(CountryStatistic.parseJSONToCountry(response));
-                }, error -> Log.e(TAG,"Error by fetching data. Check NetworkService.getOneCountryStatistic()"));
+                }, error -> {
+                    Log.e(TAG,"Error by fetching data. Check NetworkService.getOneCountryStatistic()");
+                    Toast.makeText(context,"Update failed! Try again later.",Toast.LENGTH_LONG).show();
+                });
         requestQueue.add(jsonObjectRequest);
     }
 
@@ -98,7 +110,10 @@ public class NetworkService {
                         }
                     }
                     listener.callback(countries);
-                }, error -> Log.e(TAG,"Error by fetching data. Check NetworkService.getAllCountries()"));
+                }, error -> {
+                    Log.e(TAG,"Error by fetching data. Check NetworkService.getAllCountries()");
+                    Toast.makeText(context,"Update failed! Try again later.",Toast.LENGTH_LONG).show();
+                });
         requestQueue.add(jsonArrayRequest);
     }
 
