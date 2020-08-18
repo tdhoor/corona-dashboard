@@ -1,19 +1,21 @@
 package com.example.corona_dashboard.ui.countries;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class CountriesViewModel extends ViewModel {
+import com.example.corona_dashboard.service.NetworkService;
 
-    private MutableLiveData<String> mText;
+public class CountriesViewModel extends ViewModel {
+    private CountriesAdapter adapter;
 
     public CountriesViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        adapter = new CountriesAdapter();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void update(){
+        NetworkService.getInstance().getAllCountriesStatistics(response -> adapter.addCountries(response));
+    }
+
+    public CountriesAdapter getAdapter(){
+        return adapter;
     }
 }

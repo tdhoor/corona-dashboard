@@ -20,8 +20,6 @@ import java.util.List;
 public class CountriesFragment extends Fragment {
     private static String TAG = CountriesFragment.class.getSimpleName();
     private CountriesViewModel countriesViewModel;
-    private List<CountryStatistic> countryStatistics;
-    private CountriesAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,15 +30,10 @@ public class CountriesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         recyclerView.setHasFixedSize(true);
 
-        adapter = new CountriesAdapter();
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(countriesViewModel.getAdapter());
+        countriesViewModel.update();
 
-        NetworkService.getInstance(root.getContext());
-
-        NetworkService.getInstance().getAllCountriesStatistics(response -> adapter.addCountries(response));
-
-        getActivity().findViewById(R.id.btn_refresh).setVisibility(View.VISIBLE);
-        getActivity().findViewById(R.id.btn_refresh).setOnClickListener(click -> NetworkService.getInstance().getAllCountriesStatistics(response -> adapter.addCountries(response)));
+        getActivity().findViewById(R.id.btn_refresh).setOnClickListener(view -> countriesViewModel.update());
 
         return root;
     }
