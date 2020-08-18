@@ -56,5 +56,7 @@ public class DashboardFragment extends Fragment {
         dashboardViewModel.getTotalCasesDeathPercentage().observe(getViewLifecycleOwner(),(Observer<String>) s -> totalCasesDeathPercentage.setText(s));
         dashboardViewModel.getTotalCasesGeneralDeathRate().observe(getViewLifecycleOwner(),(Observer<String>) s -> totalCasesGeneralDeathRate.setText(s));
         dashboardViewModel.getTotalCasesLastUpdate().observe(getViewLifecycleOwner(),(Observer<String>) s -> totalCasesLastUpdated.setText(s));
+
+        dashboardViewModel.update();
     }
 }
