@@ -10,4 +10,28 @@
     <string name="menu_dashboard">Dashboard</string>
     <string name="menu_countries">Countries</string>
     <string name="menu_continents">Continents</string>
+
+    <!-- Dashboard variables -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_sub_title">Today\'s numbers</string>
+    <string name="dashboard_item_1">Cases:</string>
+    <string name="dashboard_item_2">Recovered:</string>
+    <string name="dashboard_item_3">Deaths:</string>
+    <string name="dashboard_item_4">Infected:</string>
+    <string name="dashboard_item_5">Cases with outcome:</string>
+    <string name="dashboard_item_6">Mild conditions:</string>
+    <string name="dashboard_item_7">Critical conditions:</string>
+    <string name="dashboard_item_8">Death percentage:</string>
+    <string name="dashboard_item_9">General death rate:</string>
+    <string name="dashboard_item_10">Last update:</string>
+
+    <!-- Countries variables -->
+    <string name="country_title">Dashboard</string>
+    <string name="country_sub_title">Today\'s numbers</string>
+    <string name="country_item_1">Cases:</string>
+    <string name="country_item_2">Deaths:</string>
+    <string name="country_item_3">Recovered:</string>
+    <string name="country_item_4">Population:</string>
+
+    <!-- Continents variables -->
 </resources>
