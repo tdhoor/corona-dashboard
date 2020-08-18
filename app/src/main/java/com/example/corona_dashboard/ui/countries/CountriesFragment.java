@@ -1,4 +1,4 @@
-package com.example.corona_dashboard.ui.gallery;
+package com.example.corona_dashboard.ui.countries;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,21 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.corona_dashboard.R;
+import com.example.corona_dashboard.ui.continents.ContinentsFragment;
+import com.example.corona_dashboard.ui.continents.ContinentsViewModel;
 
-public class GalleryFragment extends Fragment {
-
-    private GalleryViewModel galleryViewModel;
+public class CountriesFragment extends Fragment {
+    private static String TAG = CountriesFragment.class.getSimpleName();
+    private CountriesViewModel countriesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
+        countriesViewModel = new ViewModelProvider(this).get(CountriesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_countries, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        countriesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

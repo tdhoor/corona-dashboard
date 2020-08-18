@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_dashboard"
-        android:name="com.example.corona_dashboard.ui.home.HomeFragment"
+        android:name="com.example.corona_dashboard.ui.dashboard.DashboardFragment"
         android:label="@string/menu_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/nav_countries"
-        android:name="com.example.corona_dashboard.ui.gallery.GalleryFragment"
+        android:name="com.example.corona_dashboard.ui.countries.CountriesFragment"
         android:label="@string/menu_countries"
         tools:layout="@layout/fragment_countries" />
 
     <fragment
         android:id="@+id/nav_continents"
-        android:name="com.example.corona_dashboard.ui.slideshow.SlideshowFragment"
+        android:name="com.example.corona_dashboard.ui.continents.ContinentsFragment"
         android:label="@string/menu_continents"
         tools:layout="@layout/fragment_continents" />
 </navigation>
