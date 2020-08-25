@@ -1,112 +1,176 @@
 package com.example.corona_dashboard.data;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class TotalStatistic {
-    private String totalCases, totalRecovery, totalDeathCases, totalInfected,
-            totalCasesOutcome, totalCasesMildConditions, totalCasesCriticalConditions, totalCasesDeathPercentage,
-            totalCasesGeneralDeathRate, totalCasesLastUpdated;
+    private int updated, cases, todayCases, deaths, todayDeaths, recovered, todayRecovered, active, critical, casesPerOneMillion, deathsPerOneMillion, tests,
+        testsPerOneMillion, population, oneCasePerPeople, oneDeathPerPeople, oneTestPerPeople, activePerOneMillion, recoveredPerOneMillion, criticalPerOneMillion, affectedCountries;
 
     public TotalStatistic(){}
 
-    public static TotalStatistic parseJSONToTotalStatistic(JSONObject jsonObject){
-        TotalStatistic totalStatistic = new TotalStatistic();
-
-        try {
-            totalStatistic.totalCases = jsonObject.getString("total_cases");
-            totalStatistic.totalRecovery = jsonObject.getString("recovery_cases");
-            totalStatistic.totalDeathCases = jsonObject.getString("death_cases");
-            totalStatistic.totalInfected = jsonObject.getString("currently_infected");
-            totalStatistic.totalCasesOutcome = jsonObject.getString("cases_with_outcome");
-            totalStatistic.totalCasesMildConditions = jsonObject.getString("mild_condition_active_cases");
-            totalStatistic.totalCasesCriticalConditions = jsonObject.getString("critical_condition_active_cases");
-            totalStatistic.totalCasesDeathPercentage = jsonObject.getString("closed_cases_death_percentage");
-            totalStatistic.totalCasesGeneralDeathRate = jsonObject.getString("general_death_rate");
-            totalStatistic.totalCasesLastUpdated = jsonObject.getString("last_update");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return totalStatistic;
+    public int getUpdated() {
+        return updated;
     }
 
-    public String getTotalCases() {
-        return totalCases;
+    public void setUpdated(int updated) {
+        this.updated = updated;
     }
 
-    public void setTotalCases(String totalCases) {
-        this.totalCases = totalCases;
+    public int getCases() {
+        return cases;
     }
 
-    public String getTotalRecovery() {
-        return totalRecovery;
+    public void setCases(int cases) {
+        this.cases = cases;
     }
 
-    public void setTotalRecovery(String totalRecovery) {
-        this.totalRecovery = totalRecovery;
+    public int getTodayCases() {
+        return todayCases;
     }
 
-    public String getTotalDeathCases() {
-        return totalDeathCases;
+    public void setTodayCases(int todayCases) {
+        this.todayCases = todayCases;
     }
 
-    public void setTotalDeathCases(String totalDeathCases) {
-        this.totalDeathCases = totalDeathCases;
+    public int getDeaths() {
+        return deaths;
     }
 
-    public String getTotalInfected() {
-        return totalInfected;
+    public void setDeaths(int deaths) {
+        this.deaths = deaths;
     }
 
-    public void setTotalInfected(String totalInfected) {
-        this.totalInfected = totalInfected;
+    public int getTodayDeaths() {
+        return todayDeaths;
     }
 
-    public String getTotalCasesOutcome() {
-        return totalCasesOutcome;
+    public void setTodayDeaths(int todayDeaths) {
+        this.todayDeaths = todayDeaths;
     }
 
-    public void setTotalCasesOutcome(String totalCasesOutcome) {
-        this.totalCasesOutcome = totalCasesOutcome;
+    public int getRecovered() {
+        return recovered;
     }
 
-    public String getTotalCasesMildConditions() {
-        return totalCasesMildConditions;
+    public void setRecovered(int recovered) {
+        this.recovered = recovered;
     }
 
-    public void setTotalCasesMildConditions(String totalCasesMildConditions) {
-        this.totalCasesMildConditions = totalCasesMildConditions;
+    public int getTodayRecovered() {
+        return todayRecovered;
     }
 
-    public String getTotalCasesCriticalConditions() {
-        return totalCasesCriticalConditions;
+    public void setTodayRecovered(int todayRecovered) {
+        this.todayRecovered = todayRecovered;
     }
 
-    public void setTotalCasesCriticalConditions(String totalCasesCriticalConditions) {
-        this.totalCasesCriticalConditions = totalCasesCriticalConditions;
+    public int getActive() {
+        return active;
     }
 
-    public String getTotalCasesDeathPercentage() {
-        return totalCasesDeathPercentage;
+    public void setActive(int active) {
+        this.active = active;
     }
 
-    public void setTotalCasesDeathPercentage(String totalCasesDeathPercentage) {
-        this.totalCasesDeathPercentage = totalCasesDeathPercentage;
+    public int getCritical() {
+        return critical;
     }
 
-    public String getTotalCasesGeneralDeathRate() {
-        return totalCasesGeneralDeathRate;
+    public void setCritical(int critical) {
+        this.critical = critical;
     }
 
-    public void setTotalCasesGeneralDeathRate(String totalCasesGeneralDeathRate) {
-        this.totalCasesGeneralDeathRate = totalCasesGeneralDeathRate;
+    public int getCasesPerOneMillion() {
+        return casesPerOneMillion;
     }
 
-    public String getTotalCasesLastUpdated() {
-        return totalCasesLastUpdated;
+    public void setCasesPerOneMillion(int casesPerOneMillion) {
+        this.casesPerOneMillion = casesPerOneMillion;
     }
 
-    public void setTotalCasesLastUpdated(String totalCasesLastUpdated) {
-        this.totalCasesLastUpdated = totalCasesLastUpdated;
+    public int getDeathsPerOneMillion() {
+        return deathsPerOneMillion;
+    }
+
+    public void setDeathsPerOneMillion(int deathsPerOneMillion) {
+        this.deathsPerOneMillion = deathsPerOneMillion;
+    }
+
+    public int getTests() {
+        return tests;
+    }
+
+    public void setTests(int tests) {
+        this.tests = tests;
+    }
+
+    public int getTestsPerOneMillion() {
+        return testsPerOneMillion;
+    }
+
+    public void setTestsPerOneMillion(int testsPerOneMillion) {
+        this.testsPerOneMillion = testsPerOneMillion;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    public int getOneCasePerPeople() {
+        return oneCasePerPeople;
+    }
+
+    public void setOneCasePerPeople(int oneCasePerPeople) {
+        this.oneCasePerPeople = oneCasePerPeople;
+    }
+
+    public int getOneDeathPerPeople() {
+        return oneDeathPerPeople;
+    }
+
+    public void setOneDeathPerPeople(int oneDeathPerPeople) {
+        this.oneDeathPerPeople = oneDeathPerPeople;
+    }
+
+    public int getOneTestPerPeople() {
+        return oneTestPerPeople;
+    }
+
+    public void setOneTestPerPeople(int oneTestPerPeople) {
+        this.oneTestPerPeople = oneTestPerPeople;
+    }
+
+    public int getActivePerOneMillion() {
+        return activePerOneMillion;
+    }
+
+    public void setActivePerOneMillion(int activePerOneMillion) {
+        this.activePerOneMillion = activePerOneMillion;
+    }
+
+    public int getRecoveredPerOneMillion() {
+        return recoveredPerOneMillion;
+    }
+
+    public void setRecoveredPerOneMillion(int recoveredPerOneMillion) {
+        this.recoveredPerOneMillion = recoveredPerOneMillion;
+    }
+
+    public int getCriticalPerOneMillion() {
+        return criticalPerOneMillion;
+    }
+
+    public void setCriticalPerOneMillion(int criticalPerOneMillion) {
+        this.criticalPerOneMillion = criticalPerOneMillion;
+    }
+
+    public int getAffectedCountries() {
+        return affectedCountries;
+    }
+
+    public void setAffectedCountries(int affectedCountries) {
+        this.affectedCountries = affectedCountries;
     }
 }

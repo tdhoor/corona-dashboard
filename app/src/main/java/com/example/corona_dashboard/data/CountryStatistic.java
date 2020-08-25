@@ -1,11 +1,8 @@
 package com.example.corona_dashboard.data;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class CountryStatistic {
     private String name, continent;
-    private int cases, todayCases, deaths,todayDeaths, recovered, todayRecovered,
+    private int updated, cases, todayCases, deaths,todayDeaths, recovered, todayRecovered,
             active, critical, casesPerOneMillion, deathsPerOneMillion, tests, testsPerOneMillion,
             population, oneCasePerPeople, oneDeathPerPeople,oneTestPerPeople, activePerOneMillion,
             recoveredPerOneMillion, criticalPerOneMillion;
@@ -13,62 +10,12 @@ public class CountryStatistic {
     public CountryStatistic() {
     }
 
-    public static CountryStatistic parseJSONToCountry(JSONObject jsonObject){
-        CountryStatistic countryStatistic = new CountryStatistic();
-
-        try {
-            countryStatistic.name = jsonObject.getString("country");
-            countryStatistic.cases = jsonObject.getInt("cases");
-            countryStatistic.todayCases = jsonObject.getInt("todayCases");
-            countryStatistic.deaths = jsonObject.getInt("deaths");
-            countryStatistic.todayDeaths = jsonObject.getInt("todayDeaths");
-            countryStatistic.recovered = jsonObject.getInt("recovered");
-            countryStatistic.todayRecovered = jsonObject.getInt("todayRecovered");
-            countryStatistic.active = jsonObject.getInt("active");
-            countryStatistic.critical = jsonObject.getInt("critical");
-            countryStatistic.casesPerOneMillion = jsonObject.getInt("casesPerOneMillion");
-            countryStatistic.deathsPerOneMillion = jsonObject.getInt("deathsPerOneMillion");
-            countryStatistic.tests = jsonObject.getInt("tests");
-            countryStatistic.testsPerOneMillion = jsonObject.getInt("testsPerOneMillion");
-            countryStatistic.population = jsonObject.getInt("population");
-            countryStatistic.continent = jsonObject.getString("continent");
-            countryStatistic.oneCasePerPeople = jsonObject.getInt("oneCasePerPeople");
-            countryStatistic.oneDeathPerPeople = jsonObject.getInt("oneDeathPerPeople");
-            countryStatistic.oneTestPerPeople = jsonObject.getInt("oneTestPerPeople");
-            countryStatistic.activePerOneMillion = jsonObject.getInt("activePerOneMillion");
-            countryStatistic.recoveredPerOneMillion = jsonObject.getInt("recoveredPerOneMillion");
-            countryStatistic.criticalPerOneMillion = jsonObject.getInt("criticalPerOneMillion");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return countryStatistic;
+    public int getUpdated() {
+        return updated;
     }
 
-    @Override
-    public String toString() {
-        return "Country{" +
-                "name='" + name + '\'' +
-                ", cases=" + cases +
-                ", todayCases=" + todayCases +
-                ", deaths=" + deaths +
-                ", todayDeaths=" + todayDeaths +
-                ", recovered=" + recovered +
-                ", todayRecoverd=" + todayRecovered +
-                ", active=" + active +
-                ", critical=" + critical +
-                ", casesPerOneMillion=" + casesPerOneMillion +
-                ", deathsPerOneMillion=" + deathsPerOneMillion +
-                ", tests=" + tests +
-                ", testsPerOneMillion=" + testsPerOneMillion +
-                ", population=" + population +
-                ", continent='" + continent + '\'' +
-                ", oneCasePerPeople=" + oneCasePerPeople +
-                ", oneDeathPerPeople=" + oneDeathPerPeople +
-                ", oneTestPerPeople=" + oneTestPerPeople +
-                ", activePerOneMillion=" + activePerOneMillion +
-                ", recoveredPerOneMillion=" + recoveredPerOneMillion +
-                ", criticalPerOneMillion=" + criticalPerOneMillion +
-                '}';
+    public void setUpdated(int updated) {
+        this.updated = updated;
     }
 
     public String getName() {
@@ -237,5 +184,32 @@ public class CountryStatistic {
 
     public void setCriticalPerOneMillion(int criticalPerOneMillion) {
         this.criticalPerOneMillion = criticalPerOneMillion;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "name='" + name + '\'' +
+                ", cases=" + cases +
+                ", todayCases=" + todayCases +
+                ", deaths=" + deaths +
+                ", todayDeaths=" + todayDeaths +
+                ", recovered=" + recovered +
+                ", todayRecoverd=" + todayRecovered +
+                ", active=" + active +
+                ", critical=" + critical +
+                ", casesPerOneMillion=" + casesPerOneMillion +
+                ", deathsPerOneMillion=" + deathsPerOneMillion +
+                ", tests=" + tests +
+                ", testsPerOneMillion=" + testsPerOneMillion +
+                ", population=" + population +
+                ", continent='" + continent + '\'' +
+                ", oneCasePerPeople=" + oneCasePerPeople +
+                ", oneDeathPerPeople=" + oneDeathPerPeople +
+                ", oneTestPerPeople=" + oneTestPerPeople +
+                ", activePerOneMillion=" + activePerOneMillion +
+                ", recoveredPerOneMillion=" + recoveredPerOneMillion +
+                ", criticalPerOneMillion=" + criticalPerOneMillion +
+                '}';
     }
 }

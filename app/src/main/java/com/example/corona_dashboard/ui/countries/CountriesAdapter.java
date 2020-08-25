@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.corona_dashboard.R;
 import com.example.corona_dashboard.data.CountryStatistic;
+import com.example.corona_dashboard.helpers.Converter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +31,10 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.Coun
     public void onBindViewHolder(@NonNull CountryHolder holder, int position) {
         CountryStatistic currentCountryStatistic = countryStatisticList.get(position);
         holder.countryName.setText(currentCountryStatistic.getName());
-        holder.countryTodayCases.setText(String.valueOf(currentCountryStatistic.getTodayCases()));
-        holder.countryTodayDeaths.setText(String.valueOf(currentCountryStatistic.getTodayDeaths()));
-        holder.countryTodayRecovered.setText(String.valueOf(currentCountryStatistic.getTodayRecovered()));
-        holder.countryPopulation.setText(String.valueOf(currentCountryStatistic.getPopulation()));
+        holder.countryTodayCases.setText(Converter.formatNumberToLocal(currentCountryStatistic.getTodayCases()));
+        holder.countryTodayDeaths.setText(Converter.formatNumberToLocal(currentCountryStatistic.getTodayDeaths()));
+        holder.countryTodayRecovered.setText(Converter.formatNumberToLocal(currentCountryStatistic.getTodayRecovered()));
+        holder.countryPopulation.setText(Converter.formatNumberToLocal(currentCountryStatistic.getPopulation()));
     }
 
     public void setCountries(List<CountryStatistic> countryStatistics){

@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.corona_dashboard.service.NetworkService;
+import com.example.corona_dashboard.helpers.Converter;
+import com.example.corona_dashboard.service.CoronaService;
 
 public class DashboardViewModel extends ViewModel {
     private MutableLiveData<String> title, totalCases, totalRecovery, totalDeathCases, totalInfected,
@@ -26,18 +27,12 @@ public class DashboardViewModel extends ViewModel {
     }
 
     public void update(){
-        NetworkService.getInstance().getTotalStatistic(response -> {
+        CoronaService.getTotalStatistic(response -> {
             title.setValue("Total cases");
-            totalCases.setValue(response.getTotalCases());
-            totalRecovery.setValue(response.getTotalRecovery());
-            totalDeathCases.setValue(response.getTotalDeathCases());
-            totalInfected.setValue(response.getTotalInfected());
-            totalCasesOutcome.setValue(response.getTotalCasesOutcome());
-            totalCasesMildConditions.setValue(response.getTotalCasesMildConditions());
-            totalCasesCriticalConditions.setValue(response.getTotalCasesCriticalConditions());
-            totalCasesDeathPercentage.setValue(response.getTotalCasesDeathPercentage());
-            totalCasesGeneralDeathRate.setValue(response.getTotalCasesGeneralDeathRate());
-            totalCasesLastUpdated.setValue(response.getTotalCasesLastUpdated());
+            totalCases.setValue(Converter.formatNumberToLocal(response.getCases()));
+            totalRecovery.setValue(Converter.formatNumberToLocal(response.getRecovered()));
+            totalDeathCases.setValue(Converter.formatNumberToLocal(response.getDeaths()));
+            totalInfected.setValue(Converter.formatNumberToLocal(response.getActive()));
         });
     }
 

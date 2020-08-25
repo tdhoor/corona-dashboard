@@ -2,7 +2,7 @@ package com.example.corona_dashboard.ui.countries;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.corona_dashboard.service.NetworkService;
+import com.example.corona_dashboard.service.CoronaService;
 
 public class CountriesViewModel extends ViewModel {
     private CountriesAdapter adapter;
@@ -12,7 +12,7 @@ public class CountriesViewModel extends ViewModel {
     }
 
     public void update(){
-        NetworkService.getInstance().getAllCountriesStatistics(response -> adapter.addCountries(response));
+        CoronaService.getAllCountriesStatistics(response -> adapter.addCountries(response));
     }
 
     public CountriesAdapter getAdapter(){
