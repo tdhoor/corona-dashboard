@@ -1,8 +1,11 @@
 package com.example.corona_dashboard.ui.countries;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,8 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.CountryHolder> {
-    private List<CountryStatistic> countryStatisticList = new ArrayList<>();
+public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.CountryHolder> implements Filterable {
+    private List<CountryStatistic> countryStatisticList;
+    private List<CountryStatistic> countryStatisticListFull;
+
+    CountriesAdapter(){
+        countryStatisticList = new ArrayList<>();
+        countryStatisticListFull = new ArrayList<>();
+    }
 
     @NonNull
     @Override
@@ -39,11 +48,13 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.Coun
 
     public void setCountries(List<CountryStatistic> countryStatistics){
         this.countryStatisticList = countryStatistics;
+        this.countryStatisticListFull = new ArrayList<>(this.countryStatisticList);
         notifyDataSetChanged();
     }
 
     public void addCountries(CountryStatistic countryStatistic){
         this.countryStatisticList.add(countryStatistic);
+        this.countryStatisticListFull.add(countryStatistic);
         notifyDataSetChanged();
     }
 
@@ -51,6 +62,45 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.Coun
     public int getItemCount() {
         return countryStatisticList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return countryFiler;
+    }
+
+    private Filter countryFiler = new Filter() {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<CountryStatistic> filteredList = new ArrayList<>();
+
+            if(charSequence == null || charSequence.length() == 0){
+                filteredList.addAll(countryStatisticListFull);
+                Log.e("Hääää","wos");
+            } else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                Log.e("TEST",filterPattern);// -------------------------------------------------- REMOVEME ------------------------------------------- //
+                for (CountryStatistic item : countryStatisticList) {
+                    String countryName = item.getName().trim().toLowerCase();
+
+                    if (countryName.contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            countryStatisticList.clear();
+            countryStatisticList.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
     class CountryHolder extends RecyclerView.ViewHolder{
         private TextView countryName;
